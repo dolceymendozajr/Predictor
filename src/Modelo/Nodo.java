@@ -9,7 +9,7 @@ import java.util.Queue;
 public class Nodo {
     
     private char letra;
-    private static Queue<Nodo> hijos;
+    private Queue<Nodo> hijos;
 
     public Nodo(char letra) {
         this.letra = letra;
@@ -19,9 +19,19 @@ public class Nodo {
         return hijos;
     }
 
-    public void setHijo(Nodo hijo) {
-        this.hijos.add(hijo);
+    public void addHijo(char letra) {
+        this.hijos.add(new Nodo(letra));
     }
+
+    public char getLetra() {
+        return letra;
+    }
+
+    public void setLetra(char letra) {
+        this.letra = letra;
+    }
+    
+    
     
     
     
