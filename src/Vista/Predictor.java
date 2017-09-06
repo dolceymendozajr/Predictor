@@ -104,7 +104,8 @@ public class Predictor extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_palabraMouseClicked
 
     private void txt_palabraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_palabraKeyTyped
-        // TODO add your handling code here:
+        String palabra = txt_palabra.getText();
+//        TODO Buscar palabra
     }//GEN-LAST:event_txt_palabraKeyTyped
 
     public static void main(String args[]) {

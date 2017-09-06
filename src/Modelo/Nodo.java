@@ -9,20 +9,26 @@ import java.util.Queue;
 public class Nodo {
     
     private char letra;
-    private Queue<Nodo> hijos;
+    private Nodo[] hijos = new Nodo[30];
 
     public Nodo(char letra) {
         this.letra = letra;
     }
 
-    public Queue<Nodo> getHijos() {
-        return hijos;
+    public void Añadir(String palabra){
+        Nodo actual=this;
+        int tamaño = palabra.length();
+        for (int i = 0; i < tamaño; i++) {
+            char letra = palabra.charAt(i);
+            int ascii = (int)letra-97;
+            if (actual.hijos[ascii]==null) {
+                actual.hijos[ascii]=new Nodo(letra);
+            }
+            actual=actual.hijos[ascii];
+        }
+        actual.hijos[29]=new Nodo('$');
     }
-
-    public void addHijo(char letra) {
-        this.hijos.add(new Nodo(letra));
-    }
-
+    
     public char getLetra() {
         return letra;
     }
