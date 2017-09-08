@@ -28,6 +28,10 @@ public class Nodo {
         }
         actual.hijos[29]=new Nodo('$');
     }
+
+    public Nodo[] getHijos() {
+        return hijos;
+    }
     
     public char getLetra() {
         return letra;

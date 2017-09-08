@@ -25,6 +25,7 @@ public class Predictor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txt_palabra = new javax.swing.JTextField();
         txt_resultado = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -36,9 +37,7 @@ public class Predictor extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PREDICTOR DE TEXTO");
 
-        txt_palabra.setBackground(new java.awt.Color(255, 255, 255));
         txt_palabra.setFont(new java.awt.Font("Lato Light", 0, 14)); // NOI18N
-        txt_palabra.setForeground(new java.awt.Color(0, 0, 0));
         txt_palabra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_palabra.setText("Ingrese su palabra");
         txt_palabra.setToolTipText("Ingrese la palabra la cual quiere que el programa prediga");
@@ -48,12 +47,11 @@ public class Predictor extends javax.swing.JFrame {
             }
         });
         txt_palabra.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_palabraKeyTyped(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_palabraKeyReleased(evt);
             }
         });
 
-        txt_resultado.setBackground(new java.awt.Color(255, 255, 255));
         txt_resultado.setFont(new java.awt.Font("Lato Light", 0, 14)); // NOI18N
         txt_resultado.setForeground(new java.awt.Color(0, 102, 204));
         txt_resultado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -62,6 +60,10 @@ public class Predictor extends javax.swing.JFrame {
         txt_resultado.setDisabledTextColor(new java.awt.Color(0, 102, 204));
         txt_resultado.setEnabled(false);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Predicciones");
+
         javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
         Fondo.setLayout(FondoLayout);
         FondoLayout.setHorizontalGroup(
@@ -69,10 +71,14 @@ public class Predictor extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
             .addGroup(FondoLayout.createSequentialGroup()
                 .addGap(119, 119, 119)
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_palabra, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_palabra, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txt_resultado)
+                .addContainerGap())
         );
         FondoLayout.setVerticalGroup(
             FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,8 +86,10 @@ public class Predictor extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txt_palabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(txt_resultado, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_resultado, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -103,10 +111,11 @@ public class Predictor extends javax.swing.JFrame {
         txt_palabra.setText("");
     }//GEN-LAST:event_txt_palabraMouseClicked
 
-    private void txt_palabraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_palabraKeyTyped
-        String palabra = txt_palabra.getText();
-//        TODO Buscar palabra
-    }//GEN-LAST:event_txt_palabraKeyTyped
+    private void txt_palabraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_palabraKeyReleased
+        if (!txt_palabra.getText().isEmpty()) {
+            txt_resultado.setText(Main.Prediccion(txt_palabra.getText()));
+        }
+    }//GEN-LAST:event_txt_palabraKeyReleased
 
     public static void main(String args[]) {
         
@@ -146,6 +155,7 @@ public class Predictor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txt_palabra;
     private javax.swing.JTextField txt_resultado;
     // End of variables declaration//GEN-END:variables
